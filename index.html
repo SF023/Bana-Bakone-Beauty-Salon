@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0a0a0a">
+<title>Aurelle Beauty Studio | Hair, Lashes & Nails</title>
+<meta name="description" content="Haircuts, women's hairstyling, lashes and nails. Book your appointment at Aurelle Beauty Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a; --ink:#141414; --gold:#f6b231; --gold-dark:#b8963e;
+  --grey:#f4f4f4; --muted:#666; --line:#e4e4e4; --white:#fff;
+  --sans:'Poppins','Helvetica Neue',Arial,sans-serif;
+  --serif:'Arvo',Georgia,'Times New Roman',serif;
+  --max:1120px; --nav-h:72px; --ease:.3s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav-h)}
+body{font-family:var(--sans);color:var(--ink);background:var(--white);line-height:1.7;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.5rem}
+section{padding:5rem 0;position:relative;overflow:hidden}
+h1,h2,h3{font-weight:700;line-height:1.15}
+h1{font-size:clamp(2.4rem,5.5vw,3.9rem)}
+h2{font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.eyebrow{display:block;color:var(--gold);font-size:.85rem;font-weight:500;margin-bottom:.8rem}
+.lead{color:var(--muted);max-width:52ch}
+.ghost::before{content:attr(data-ghost);position:absolute;top:2.2rem;left:50%;transform:translateX(-50%);font-family:var(--serif);font-size:clamp(4rem,14vw,9rem);color:rgba(0,0,0,.045);white-space:nowrap;pointer-events:none;line-height:1}
+
+/* Buttons */
+.btn{display:inline-block;padding:.8rem 1.7rem;font-size:.9rem;font-weight:600;border:1.5px solid var(--gold);transition:background var(--ease),color var(--ease),border-color var(--ease);cursor:pointer;text-align:center;font-family:inherit}
+.btn-gold{background:var(--gold);color:var(--black)}
+.btn-gold:hover{background:var(--white);border-color:var(--white)}
+.btn-line{background:transparent;color:var(--white);border-color:rgba(255,255,255,.7)}
+.btn-line:hover{background:var(--white);color:var(--black);border-color:var(--white)}
+.btn-dark{background:transparent;color:var(--black);border-color:var(--black)}
+.btn-dark:hover{background:var(--black);color:var(--gold)}
+.btn-sm{padding:.6rem 1.3rem;font-size:.85rem}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--black);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h)}
+.logo{font-weight:700;font-size:1.35rem;color:var(--white);letter-spacing:.01em}
+.logo b{color:var(--gold)}
+.menu{display:flex;align-items:center;gap:2.2rem}
+.menu a:not(.btn){font-size:.88rem;font-weight:500;color:var(--white);transition:color var(--ease)}
+.menu a:not(.btn):hover,.menu a.active{color:var(--gold)}
+.toggle{display:none;background:none;border:0;width:42px;height:42px;cursor:pointer;color:var(--white)}
+.toggle span,.toggle span::before,.toggle span::after{display:block;width:22px;height:2px;background:currentColor;position:relative;margin:auto;transition:var(--ease)}
+.toggle span::before,.toggle span::after{content:"";position:absolute;left:0}
+.toggle span::before{top:-7px}.toggle span::after{top:7px}
+.toggle[aria-expanded="true"] span{background:transparent}
+.toggle[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
+.toggle[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
+
+/* Images with fallback */
+.ph{background:linear-gradient(135deg,#2a2a2a,#111);overflow:hidden;position:relative}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+
+/* Hero: chalkboard texture */
+.hero{background:var(--black);color:var(--white);padding:0;min-height:560px;display:flex;align-items:center}
+.hero::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E"),radial-gradient(circle at 20% 30%,#1a1a1a,transparent 60%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:1rem;width:100%}
+.hero .copy{padding:4rem 0}
+.hero p.lead{color:#bdbdbd;margin:1.3rem 0 2rem}
+.actions{display:flex;flex-wrap:wrap;gap:.9rem}
+.hero .ph{background:none;height:100%;min-height:520px;margin-right:-1.5rem;-webkit-mask-image:linear-gradient(to right,transparent,#000 40%);mask-image:linear-gradient(to right,transparent,#000 40%)}
+.hero .ph img{position:absolute;inset:0}
+
+/* About */
+.about{background:var(--grey)}
+.about .wrap{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative}
+.collage{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:150px 190px;gap:.8rem;max-width:440px}
+.collage .ph{border:5px solid var(--white);box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.collage .a{grid-row:1/3}
+.collage .b{grid-column:2}
+.collage .c{grid-column:2}
+.about h2{margin-bottom:1rem}
+.about .lead{margin-bottom:1.8rem}
+
+/* Services (tabs) */
+.services{background:var(--white)}
+.services .head{text-align:center;margin-bottom:2.5rem;position:relative}
+.services h2{font-family:var(--serif);font-weight:400}
+.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;max-width:760px;margin:0 auto 2.5rem;position:relative}
+.tab{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1.2rem .5rem;background:var(--white);border:1px solid var(--line);box-shadow:0 4px 14px rgba(0,0,0,.05);font-family:var(--serif);font-size:.85rem;color:var(--ink);cursor:pointer;transition:var(--ease)}
+.tab svg{width:34px;height:34px;fill:none;stroke:var(--gold-dark);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;transition:var(--ease)}
+.tab:hover{transform:translateY(-3px)}
+.tab[aria-selected="true"]{background:var(--gold-dark);border-color:var(--gold-dark);color:var(--white)}
+.tab[aria-selected="true"] svg{stroke:var(--white)}
+.panel{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center;max-width:900px;margin:0 auto;position:relative}
+.panel[hidden]{display:none}
+.panel .ph{aspect-ratio:4/3}
+.panel:hover .ph img{transform:scale(1.03)}
+.panel h3{font-family:var(--serif);font-weight:700;font-size:1.5rem;margin-bottom:.8rem}
+.panel p{color:var(--muted);margin-bottom:1.2rem;font-size:.95rem}
+.checks{margin-bottom:1.6rem;display:grid;gap:.5rem;font-size:.9rem}
+.checks li{display:flex;gap:.6rem;align-items:center}
+.checks li::before{content:"✓";display:grid;place-items:center;flex:none;width:20px;height:20px;border-radius:50%;background:#e8dcc0;color:var(--gold-dark);font-size:.7rem;font-weight:700}
+.price{display:block;font-size:.85rem;color:var(--gold-dark);font-weight:600;margin-bottom:1rem}
+
+/* Booking banner */
+.book{color:var(--white);background:var(--black);padding:5rem 0}
+.book .bg{position:absolute;inset:0}
+.book .bg img{width:100%;height:100%;object-fit:cover;opacity:.35}
+.book .wrap{position:relative;display:grid;grid-template-columns:1.5fr 1fr;gap:3rem;align-items:center}
+.book h2{margin-bottom:.9rem}
+.book p{color:#cfcfcf;margin-bottom:1.8rem;max-width:46ch}
+.callcard{background:var(--white);color:var(--ink);text-align:center;padding:2rem 1.5rem;max-width:280px;justify-self:center;width:100%}
+.callcard .ic{width:56px;height:56px;border-radius:50%;background:var(--grey);display:grid;place-items:center;margin:0 auto .8rem}
+.callcard svg{width:24px;height:24px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.callcard small{display:block;color:var(--muted);font-size:.8rem}
+.callcard a{font-weight:600;font-size:1.1rem}
+.callcard a:hover{color:var(--gold-dark)}
+
+/* Working days */
+.hours{background:var(--grey)}
+.hours .box{display:grid;grid-template-columns:1fr 1fr;max-width:900px;margin:0 auto;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.hours .ph{min-height:320px}
+.hours .gold{background:var(--gold);padding:2.6rem 2.4rem;color:var(--black)}
+.hours h2{font-size:1.5rem;letter-spacing:.03em;color:var(--white);margin-bottom:.3rem}
+.hours .gold>p{font-size:.9rem;margin-bottom:1.4rem}
+.hours li{display:flex;justify-content:space-between;gap:1rem;padding:.55rem 0;border-bottom:1px solid rgba(0,0,0,.2);font-size:.9rem}
+.hours li span:first-child{font-weight:600;color:var(--white)}
+.hours .btn{margin-top:1.8rem}
+
+/* Testimonials */
+.reviews{background:var(--white)}
+.reviews .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:3rem;align-items:center;position:relative}
+.reviews h2{margin-bottom:1rem}
+.reviews .lead{margin-bottom:1.6rem}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.rev{background:var(--white);box-shadow:0 6px 24px rgba(0,0,0,.09);padding:1.8rem 1.3rem;text-align:center}
+.av{width:56px;height:56px;border-radius:50%;background:var(--black);color:var(--gold);display:grid;place-items:center;font-weight:600;margin:0 auto .8rem}
+.rev p{font-size:.85rem;color:var(--muted);margin-bottom:.8rem}
+.stars{color:var(--gold);letter-spacing:.1em;font-size:.95rem}
+.rev strong{display:block;font-size:.9rem}
+.rev small{color:#999;font-size:.75rem}
+
+/* Footer */
+footer{background:var(--black);color:#cfcfcf;padding:3.5rem 0 1.5rem;font-size:.9rem}
+.fhead{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.12)}
+.fhead span{color:var(--white);margin-right:1rem}
+.cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:2.5rem;padding:2.5rem 0}
+footer h3{font-size:.95rem;color:var(--gold);font-weight:500;margin-bottom:1rem}
+footer li{margin-bottom:.45rem}
+footer a:hover{color:var(--gold)}
+.social{display:flex;gap:.7rem;margin-top:1.2rem}
+.social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:grid;place-items:center;transition:var(--ease)}
+.social a:hover{background:var(--gold);border-color:var(--gold);color:var(--black)}
+.social svg{width:17px;height:17px;fill:currentColor}
+.copyright{padding-top:1.3rem;border-top:1px solid rgba(255,255,255,.12);font-size:.8rem;color:#888}
+.wa-float{position:fixed;right:1rem;bottom:1rem;z-index:40;display:none;background:var(--gold);color:var(--black);padding:.75rem 1.2rem;border-radius:999px;font-weight:600;font-size:.88rem;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+
+/* Responsive */
+@media (max-width:900px){
+  section{padding:3.8rem 0}
+  .toggle{display:block}
+  .menu{position:absolute;top:var(--nav-h);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--black);padding:.3rem 1.5rem 1.5rem;display:none;border-bottom:1px solid rgba(255,255,255,.1)}
+  .menu.open{display:flex}
+  .menu li{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.08)}
+  .menu li:last-child{border:0;padding-top:1.1rem}
+  .hero .wrap,.about .wrap,.reviews .wrap,.book .wrap,.panel,.hours .box{grid-template-columns:1fr}
+  .hero{min-height:0}
+  .hero .ph{order:-1;min-height:300px;margin:0 -1.5rem;-webkit-mask-image:linear-gradient(to bottom,#000 55%,transparent);mask-image:linear-gradient(to bottom,#000 55%,transparent)}
+  .hero .copy{padding:0 0 3.5rem}
+  .about .wrap,.reviews .wrap{gap:2.5rem}
+  .collage{max-width:100%}
+  .panel{gap:1.5rem}
+  .hours .ph{min-height:220px}
+  .cols{grid-template-columns:1fr 1fr}
+  .wa-float{display:block}
+}
+@media (max-width:560px){
+  .tabs{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:1fr}
+  .cols{grid-template-columns:1fr}
+  .actions .btn{flex:1 1 100%}
+  .hours .gold{padding:2rem 1.5rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a href="#home" class="logo"><span data-logo>Aurelle</span><b>.</b></a>
+    <button class="toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="btn btn-gold btn-sm" data-book>Book an Appointment</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="wrap">
+      <div class="copy">
+        <span class="eyebrow">Welcome to <span data-bind="name">Aurelle Beauty Studio</span></span>
+        <h1>Your Beauty, Our Passion.</h1>
+        <p class="lead">From flawless hairstyles to beautiful lashes and nails, enjoy a beauty experience designed to make you feel confident and refreshed.</p>
+        <div class="actions">
+          <a href="#" class="btn btn-gold" data-book>Book an Appointment</a>
+          <a href="#services" class="btn btn-line">Explore Our Services</a>
+        </div>
+      </div>
+      <div class="ph"><img data-img="hero" alt="Stylist finishing a client's hair in a modern salon" fetchpriority="high"></div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about ghost" id="about" data-ghost="About">
+    <div class="wrap">
+      <div class="collage">
+        <div class="ph a"><img data-img="about1" alt="Stylist at work" loading="lazy"></div>
+        <div class="ph b"><img data-img="about2" alt="Hair styling" loading="lazy"></div>
+        <div class="ph c"><img data-img="about3" alt="Salon interior" loading="lazy"></div>
+      </div>
+      <div>
+        <span class="eyebrow">About Us</span>
+        <h2>Beauty Meets Confidence.</h2>
+        <p class="lead">We are a small salon built around one idea: you should leave feeling like the best version of yourself. Our team brings professional skill and close attention to detail to every cut, set of lashes and manicure, in a welcoming space where you are never rushed. Your satisfaction is how we measure a job well done.</p>
+        <a href="#services" class="btn btn-gold">Our Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services ghost" id="services" data-ghost="Services">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow" style="color:var(--gold-dark)">Our Services</span>
+        <h2>Hair, Lashes &amp; Nails</h2>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Services">
+        <button class="tab" role="tab" id="t-haircuts" aria-controls="p-haircuts" aria-selected="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></svg>Haircuts</button>
+        <button class="tab" role="tab" id="t-styling" aria-controls="p-styling" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M4 5h16v5H4z"/><path d="M6 10v9M10 10v9M14 10v9M18 10v9"/></svg>Women's Styling</button>
+        <button class="tab" role="tab" id="t-lashes" aria-controls="p-lashes" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24"><path d="M2 14c3-5 7-7 10-7s7 2 10 7"/><circle cx="12" cy="13" r="3"/><path d="m5 9-1-2M9 7 8.5 4.5M15 7l.5-2.5M19 9l1-2"/></svg>Lashes</button>
+        <button class="tab" role="tab" id="t-nails" aria-controls="p-nails" aria-selected="false" tabindex="-1"><svg viewBox="0 0 24 24"><rect x="8" y="11" width="8" height="10" rx="2"/><path d="M10 11V8h4v3M11 8V3h2v5"/></svg>Nails</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-haircuts" aria-labelledby="t-haircuts">
+        <div class="ph"><img data-img="haircuts" alt="Stylist cutting a client's hair" loading="lazy"></div>
+        <div><h3>Haircuts</h3><span class="price" data-price="haircuts">From R200</span>
+          <p>Professional haircuts tailored to your style and personality.</p>
+          <ul class="checks"><li>Consultation with every cut</li><li>Shape that grows out well</li></ul>
+          <a href="#" class="btn btn-gold" data-book="Haircuts">Book Now</a></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-styling" aria-labelledby="t-styling" hidden>
+        <div class="ph"><img data-img="styling" alt="Woman with a soft blowout" loading="lazy"></div>
+        <div><h3>Women's Hairstyling</h3><span class="price" data-price="styling">From R350</span>
+          <p>Beautiful styling, blowouts, and hairstyles for every occasion.</p>
+          <ul class="checks"><li>Blowouts, updos and event styling</li><li>Products matched to your hair</li></ul>
+          <a href="#" class="btn btn-gold" data-book="Women's Hairstyling">Book Now</a></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-lashes" aria-labelledby="t-lashes" hidden>
+        <div class="ph"><img data-img="lashes" alt="Full, natural-looking eyelashes" loading="lazy"></div>
+        <div><h3>Lashes</h3><span class="price" data-price="lashes">From R400</span>
+          <p>Enhance your natural beauty with beautiful eyelash services.</p>
+          <ul class="checks"><li>Natural to dramatic looks</li><li>Gentle, lash-safe application</li></ul>
+          <a href="#" class="btn btn-gold" data-book="Lashes">Book Now</a></div>
+      </div>
+      <div class="panel" role="tabpanel" id="p-nails" aria-labelledby="t-nails" hidden>
+        <div class="ph"><img data-img="nails" alt="Neat manicured nails" loading="lazy"></div>
+        <div><h3>Nails</h3><span class="price" data-price="nails">From R180</span>
+          <p>Manicures, nail care, and stylish nail designs.</p>
+          <ul class="checks"><li>Manicures and nail care</li><li>Custom colours and designs</li></ul>
+          <a href="#" class="btn btn-gold" data-book="Nails">Book Now</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking banner -->
+  <section class="book">
+    <div class="bg ph"><img data-img="booking" alt=""></div>
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Book Now</span>
+        <h2>Ready for Your Beauty Refresh?</h2>
+        <p>Choose a service, pick a time that suits you, and we will take care of the rest. Message us on WhatsApp to book your next appointment.</p>
+        <a href="#" class="btn btn-gold" data-book>Book Your Appointment</a>
+      </div>
+      <div class="callcard">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <small>Call Now</small>
+        <a href="#" data-tel data-bind="phone">+27 11 000 0000</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Working days -->
+  <section class="hours">
+    <div class="wrap">
+      <div class="box">
+        <div class="ph"><img data-img="hours" alt="Client in the salon chair" loading="lazy"></div>
+        <div class="gold">
+          <h2>WORKING DAYS</h2>
+          <p>We are open six days a week.</p>
+          <ul id="hours"></ul>
+          <a href="#" class="btn btn-dark" data-book>Book Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="reviews ghost" data-ghost="Reviews">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Testimonials</span>
+        <h2>What Our Clients Say About Us</h2>
+        <p class="lead">Real words from the people we look after. Had a visit with us? We would love to hear how it went.</p>
+        <a href="#" class="btn btn-gold" data-review target="_blank" rel="noopener">Give Reviews</a>
+      </div>
+      <div class="cards">
+        <div class="rev"><div class="av">AM</div><p>An amazing experience from start to finish. My hair has never looked better and I felt completely looked after.</p><div class="stars">★★★★★</div><strong>Client Name</strong><small>Regular client</small></div>
+        <div class="rev"><div class="av">TN</div><p>Beautiful lashes and a lovely, relaxed atmosphere. Careful work, and I always leave happy.</p><div class="stars">★★★★★</div><strong>Client Name</strong><small>Regular client</small></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="fhead">
+      <a href="#home" class="logo"><span data-logo>Aurelle</span><b>.</b></a>
+      <div><span>Ready to get started?</span><a href="#" class="btn btn-gold btn-sm" data-book>Book Now</a></div>
+    </div>
+    <div class="cols">
+      <div>
+        <h3>About</h3>
+        <p><span data-bind="name">Aurelle Beauty Studio</span> offers haircuts, women's hairstyling, lashes and nails in a calm, welcoming space.</p>
+        <div class="social">
+          <a href="#" data-social="instagram" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="fill:none"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" data-social="facebook" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.5V13h2.8v8h3.2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Services</h3>
+        <ul><li><a href="#services" data-goto="haircuts">Haircuts</a></li><li><a href="#services" data-goto="styling">Women's Hairstyling</a></li><li><a href="#services" data-goto="lashes">Lashes</a></li><li><a href="#services" data-goto="nails">Nails</a></li></ul>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#services">Services</a></li><li><a href="#" data-book="WhatsApp booking">Book on WhatsApp</a></li></ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="#" data-map data-bind="address">12 Rose Avenue, Sandton, Johannesburg, 2196</a></li>
+          <li><a href="#" data-tel data-bind="phone">+27 11 000 0000</a></li>
+          <li><a href="#" data-email data-bind="email">hello@aurelle.example</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="copyright">&copy; <span id="year">2026</span> <span data-bind="name">Aurelle Beauty Studio</span>. All rights reserved.</p>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" data-book>Book on WhatsApp</a>
+
+<script>
+/* ===== EDIT THIS BLOCK TO CUSTOMISE THE SITE ===== */
+const SITE = {
+  name: "Aurelle Beauty Studio",
+  phone: "+27 11 000 0000",
+  whatsapp: "27110000000",              // digits only, with country code, no + or spaces
+  email: "hello@aurelle.example",
+  address: "12 Rose Avenue, Sandton, Johannesburg, 2196",
+  instagram: "https://instagram.com/yoursalon",
+  facebook: "https://facebook.com/yoursalon",
+  reviewUrl: "",                         // e.g. your Google review link; blank opens the address on Google Maps
+  bookingUrl: "",                        // optional: send all Book buttons to an online booking platform instead of WhatsApp
+  bookingMessage: "Hi! I'd like to book an appointment",
+  hours: [["Monday – Friday","09:00 – 18:00"],["Saturday","08:00 – 16:00"],["Sunday","Closed"]],
+  prices: { haircuts: "From R200", styling: "From R350", lashes: "From R400", nails: "From R180" },
+  // Replace with your own photos (e.g. "images/hero.jpg"). A dark block shows if a photo fails to load.
+  images: {
+    hero:     "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=75",
+    about1:   "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=500&q=75",
+    about2:   "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=500&q=75",
+    about3:   "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=500&q=75",
+    booking:  "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1400&q=70",
+    hours:    "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=700&q=75",
+    haircuts: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=75",
+    styling:  "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=800&q=75",
+    lashes:   "https://images.unsplash.com/photo-1583001931096-959e9a1a6223?auto=format&fit=crop&w=800&q=75",
+    nails:    "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=75"
+  }
+};
+/* ================================================== */
+
+(function(){
+  const $$ = s => document.querySelectorAll(s);
+  const wa = m => `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(m)}`;
+  const maps = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(SITE.address);
+
+  $$('[data-bind]').forEach(el => { if (SITE[el.dataset.bind]) el.textContent = SITE[el.dataset.bind]; });
+  $$('[data-logo]').forEach(el => el.textContent = SITE.name.split(' ')[0]);
+  $$('[data-price]').forEach(el => { const v = SITE.prices[el.dataset.price]; if (v) el.textContent = v; });
+  $$('#year').forEach(el => el.textContent = new Date().getFullYear());
+  document.title = `${SITE.name} | Hair, Lashes & Nails`;
+
+  // Opening hours
+  const hl = document.getElementById('hours');
+  SITE.hours.forEach(([d, t]) => { const li = document.createElement('li'); li.innerHTML = '<span></span><span></span>'; li.children[0].textContent = d; li.children[1].textContent = t; hl.appendChild(li); });
+
+  // Booking, contact, social, review links
+  $$('[data-book]').forEach(a => {
+    const s = a.dataset.book;
+    a.href = SITE.bookingUrl || wa(s && !/whatsapp/i.test(s) ? `${SITE.bookingMessage} for ${s}.` : `${SITE.bookingMessage}.`);
+    a.target = '_blank'; a.rel = 'noopener';
+  });
+  $$('[data-tel]').forEach(a => a.href = 'tel:' + SITE.phone.replace(/[^\d+]/g, ''));
+  $$('[data-email]').forEach(a => a.href = 'mailto:' + SITE.email);
+  $$('[data-map]').forEach(a => { a.href = maps; a.target = '_blank'; a.rel = 'noopener'; });
+  $$('[data-social]').forEach(a => a.href = SITE[a.dataset.social]);
+  $$('[data-review]').forEach(a => a.href = SITE.reviewUrl || maps);
+
+  // Images with graceful fallback
+  $$('img[data-img]').forEach(img => { img.addEventListener('error', () => img.remove()); img.src = SITE.images[img.dataset.img]; });
+
+  // Service tabs
+  const tabs = [...$$('.tab')];
+  const show = id => {
+    tabs.forEach(t => { const on = t.id === 't-' + id; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1; });
+    $$('.panel').forEach(p => p.hidden = p.id !== 'p-' + id);
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => show(t.id.slice(2)));
+    t.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      n.focus(); show(n.id.slice(2));
+    });
+  });
+  $$('[data-goto]').forEach(a => a.addEventListener('click', () => show(a.dataset.goto)));
+
+  // Mobile menu
+  const toggle = document.querySelector('.toggle'), menu = document.getElementById('menu');
+  const close = () => { menu.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); };
+  toggle.addEventListener('click', () => toggle.setAttribute('aria-expanded', menu.classList.toggle('open')));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+  // Highlight current nav link
+  const links = [...menu.querySelectorAll('a[href^="#"]:not(.btn)')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+  addEventListener('scroll', () => {
+    const y = scrollY + 120; let cur = 0;
+    secs.forEach((s, i) => { if (s && s.offsetTop <= y) cur = i; });
+    links.forEach((a, i) => a.classList.toggle('active', i === cur));
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
